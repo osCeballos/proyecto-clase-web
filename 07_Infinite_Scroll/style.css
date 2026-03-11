@@ -1,0 +1,155 @@
+/* Variables CSS de diseño base */
+:root {
+  --color-bg: #FAFAFA;
+  --color-text: #333333;
+  --color-primary: #10B981; /* Emerald 500 */
+  --color-card-bg: #FFFFFF;
+  --color-border: #E5E7EB;
+  
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+.feed-container {
+  max-width: 800px; /* Feed centralizado tipo Twitter/Instagram */
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+
+.feed-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.feed-header h1 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.feed-header p {
+  color: #6B7280;
+}
+
+/* Grid del Feed */
+.feed-grid {
+  display: flex;
+  flex-direction: column; /* Apiladas visualmente para el scroll hacia abajo */
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Componente de Tarjeta (Feed Card) */
+.feed-card {
+  background-color: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  
+  /* Animación de entrada suave cuando JS las inyecta en el DOM */
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.feed-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+/* Diseño Skeleton Loader simulando imágenes para carga asíncrona */
+.feed-card__image-placeholder {
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  /* Animación Skeleton Loader (Shimmer effect) */
+  animation: shimmer 1.5s infinite; 
+}
+
+.feed-card h2 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: #111827;
+}
+
+.feed-card p {
+  color: #4B5563;
+  font-size: 1rem;
+}
+
+/* Estados UX: Indicador de Carga (Spinner) y Fin de Feed */
+.loading-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 0;
+  gap: 1rem;
+  color: #6B7280;
+  font-size: 0.95rem;
+  
+  /* Oculto mediante opacidad para no romper el layout si lo quitamos de repente */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.loading-indicator.visible {
+  opacity: 1;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--color-border);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.end-message {
+  text-align: center;
+  padding: 3rem;
+  color: var(--color-primary);
+  font-weight: 600;
+  background: #ECFDF5;
+  border-radius: 12px;
+  margin-top: 2rem;
+}
+
+/* Animaciones (Keyframes) locales */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}

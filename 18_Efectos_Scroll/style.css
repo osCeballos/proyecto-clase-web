@@ -1,0 +1,137 @@
+/* ========================================
+   1. DESIGN TOKENS
+   ======================================== */
+:root {
+  --bg-color: #0F172A;
+  --surface-color: #1E293B;
+  --text-main: #F8FAFC;
+  --text-muted: #94A3B8;
+  --accent: #38BDF8; /* Light Blue */
+  --accent-glow: rgba(56, 189, 248, 0.4);
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  margin: 0;
+  overflow-x: hidden;
+}
+
+/* ========================================
+   2. PRESENTACIÓN GENERAL (Layout)
+   ======================================== */
+.hero-section {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  border-bottom: 1px solid var(--surface-color);
+}
+
+.hero-content { max-width: 700px; }
+h1 { font-size: clamp(3rem, 8vw, 5rem); margin-bottom: 1.5rem; letter-spacing: -0.05em;}
+.text-gradient {
+  background: linear-gradient(135deg, #38BDF8, #818CF8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-content p { font-size: 1.25rem; color: var(--text-muted); line-height: 1.6; }
+
+.scroll-indicator {
+  margin-top: 4rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  animation: bounce 2s infinite ease-in-out;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
+
+.content-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 6rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 10rem;
+}
+
+/* Tipografías y Cajas */
+h2 { font-size: 2.5rem; margin-bottom: 1rem; color: var(--text-main); }
+h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+p { line-height: 1.7; color: var(--text-muted); font-size: 1.1rem; }
+code { background: var(--surface-color); padding: 0.2rem 0.5rem; border-radius: 4px; color: var(--accent); }
+
+.text-block { max-width: 600px; margin: 0 auto; text-align: center; }
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 4rem;
+}
+.grid-img { width: 100%; height: 300px; object-fit: cover; border-radius: 16px; background: var(--surface-color); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5); }
+
+.feature-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+}
+.feature-card {
+  background: var(--surface-color);
+  padding: 3rem 2rem;
+  border-radius: 24px;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.showcase-content { text-align: center; max-width: 700px; margin: 0 auto; padding: 4rem 2rem; border-left: 4px solid var(--accent); background: linear-gradient(90deg, var(--surface-color) 0%, transparent 100%); border-radius: 0 24px 24px 0;}
+
+.footer { text-align: center; padding: 4rem; border-top: 1px solid var(--surface-color); color: var(--text-muted); }
+
+
+/* ========================================
+   3. ESTADOS BASE DE REVELACIÓN AURA (SCROLL ANIMATIONS)
+   ======================================== */
+
+
+/* Base Hidden State Origin Matrix */
+.reveal-item {
+  opacity: 0;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) var(--delay, 0s), 
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) var(--delay, 0s);
+  will-change: opacity, transform;
+}
+
+/* Geometric Start Setup Type Architecture */
+.reveal-item[data-reveal-type="fade-up"] { transform: translateY(60px); }
+.reveal-item[data-reveal-type="zoom-in"] { transform: scale(0.85); }
+
+/* Custom Dir Variable Side Reveal */
+.reveal-item[data-reveal-type="slide-side"] { transform: translateX(var(--slide-dir, -50px)); }
+
+
+/* End Transition Intersection Display Target View */
+.reveal-item.is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+/* ========================================
+   4. A11Y AURA (REDUCED MOTION FIX)
+   ======================================== */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-item {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}

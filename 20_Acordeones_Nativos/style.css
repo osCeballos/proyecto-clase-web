@@ -1,0 +1,122 @@
+/* ========================================
+   1. VARIABLES Y BASES
+   ======================================== */
+:root {
+  --color-bg: #F0F4F8;
+  --color-surface: #FFFFFF;
+  --color-text: #1A202C;
+  --color-primary: #3182CE;
+  --color-border: #E2E8F0;
+  --color-accent: #EBF8FF;
+  
+  --transition-speed: 0.3s;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+.header { background: var(--color-surface); padding: 1rem; border-bottom: 1px solid var(--color-border); }
+.logo { font-size: 1.25rem; font-weight: 700; max-width: 800px; margin: 0 auto; }
+.content { max-width: 800px; margin: 0 auto; padding: 4rem 1.5rem; }
+
+.section-header { margin-bottom: 3rem; text-align: center; }
+.section-header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; color: #2D3748; }
+.section-header p { color: #718096; }
+
+/* ========================================
+   2. EL ACORDEÓN NATIVO (DETAILS/SUMMARY)
+   ======================================== */
+.accordion-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.accordion-item {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all var(--transition-speed);
+}
+
+/* Open State Component Style */
+.accordion-item[open] {
+  border-color: var(--color-primary);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Detail Summary Marker Reset Mechanism */
+.accordion-header {
+  list-style: none; /* Estándar */
+  padding: 1.25rem 1.5rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.accordion-header::-webkit-details-marker { display: none; }
+
+.accordion-header:hover { background-color: var(--color-accent); }
+
+/* Custom Structural Geometric Icon Decoration System */
+.icon {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  transition: transform var(--transition-speed);
+}
+.icon::before, .icon::after {
+  content: '';
+  position: absolute;
+  background-color: var(--color-primary);
+  border-radius: 2px;
+  transition: all var(--transition-speed);
+}
+
+/* Plus/Minus Geometry Matrix Setup */
+.icon::before { width: 2px; height: 12px; left: 9px; top: 4px; }
+.icon::after { width: 12px; height: 2px; left: 4px; top: 9px; }
+
+/* Open State Modifier Configuration Transformation Node */
+.accordion-item[open] .icon { transform: rotate(90deg); }
+.accordion-item[open] .icon::before { opacity: 0; }
+
+/* ========================================
+   3. EL CONTENIDO: ANIMACIÓN CON GRID
+   ======================================== */
+/* Grid Based Layout Translation Render Configuration Matrix */
+.accordion-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--transition-speed) ease-out;
+}
+
+.accordion-item[open] .accordion-content {
+  grid-template-rows: 1fr;
+}
+
+/* Inner Wrapper Collision Boundary Setup */
+.content-inner {
+  overflow: hidden;
+  padding: 0 1.5rem;
+}
+
+.accordion-item[open] .content-inner {
+  padding-bottom: 1.5rem;
+}
+
+.content-inner p {
+  color: #4A5568;
+  font-size: 1rem;
+}

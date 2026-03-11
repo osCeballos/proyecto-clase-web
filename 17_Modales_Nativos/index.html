@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modales y Offcanvas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Native Dialog API Exploration -->
+
+  <header class="navbar">
+    <div class="navbar-container">
+      <div class="logo">Shop<span style="color: var(--color-primary)">.</span></div>
+      
+      <div class="nav-actions">
+        <!-- Main UI Modal Triggers -->
+        <button type="button" class="btn btn-ghost" id="btn-login" aria-haspopup="dialog" aria-controls="modal-login">
+          Acceder
+        </button>
+        
+        <!-- Auxiliary Off-Canvas Trigger -->
+        <button type="button" class="btn btn-primary" id="btn-cart" aria-haspopup="dialog" aria-controls="modal-cart">
+          Cesta (3)
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="content">
+    <div class="hero">
+      <h1><span style="color: var(--color-primary)">La muerte</span> del div modal.</h1>
+      <p>Aprende a implementar ventanas modales y paneles laterales utilizando la API nativa de JavaScript, mejorando la accesibilidad y el rendimiento.</p>
+    </div>
+  </main>
+
+
+  <!-- ARIA Linked Modal Container -->
+  <dialog class="modal-dialog modal-center" id="modal-login" aria-labelledby="login-title">
+    
+    <div class="modal-header">
+      <h2 id="login-title">Iniciar Sesión</h2>
+      <!-- Focus-handled Close Trigger -->
+      <button type="button" class="btn-close" aria-label="Cerrar ventana" data-close-modal>✕</button>
+    </div>
+
+    <div class="modal-body">
+      <p class="modal-desc">Bienvenido de nuevo, introduce tus credenciales para continuar.</p>
+      
+      <form class="demo-form" method="dialog">
+        <div class="form-group">
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" placeholder="hola@ejemplo.com" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Contraseña</label>
+          <input type="password" id="password" placeholder="••••••••" required>
+        </div>
+        
+        <!-- Native Form Method Dialog Architecture -->
+        <button type="submit" class="btn btn-primary w-full mt-4">Entrar</button>
+      </form>
+    </div>
+  </dialog>
+
+
+  <!-- Off-Canvas Semantic Modal Architecture -->
+  <dialog class="modal-dialog modal-offcanvas" id="modal-cart" aria-labelledby="cart-title">
+    
+    <div class="modal-header">
+      <h2 id="cart-title">Tu Cesta</h2>
+      <button type="button" class="btn-close" aria-label="Cerrar cesta" data-close-modal>✕</button>
+    </div>
+
+    <div class="modal-body cart-body">
+      <div class="cart-items">
+        <!-- Demo Content -->
+        <div class="cart-item">
+          <div class="img-mockup"></div>
+          <div>
+            <h4>Nike Air Max</h4>
+            <p>145.00 €</p>
+          </div>
+        </div>
+        <div class="cart-item">
+          <div class="img-mockup"></div>
+          <div>
+            <h4>Calcetines Crew</h4>
+            <p>12.50 €</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="modal-footer">
+      <div class="cart-total">
+        <span>Total a pagar</span>
+        <strong>157.50 €</strong>
+      </div>
+      <!-- Secondary Action Footer Component -->
+      <button type="button" class="btn btn-primary w-full" data-close-modal>Completar Pago</button>
+    </div>
+
+  </dialog>
+
+  <script src="main.js"></script>
+</body>
+</html>

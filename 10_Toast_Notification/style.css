@@ -1,0 +1,217 @@
+/* Design Tokens Globales */
+:root {
+  --color-bg: #F8FAFC;
+  --color-text: #1E293B;
+  --color-surface: #FFFFFF;
+  --color-border: #E2E8F0;
+  
+  --color-success: #10B981;
+  --color-error: #EF4444;
+  --color-warning: #F59E0B;
+  --color-info: #3B82F6;
+  
+  --shadow-toast: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  --radius-lg: 12px;
+  
+  --toast-duration: 4000ms; /* Duración de vida del Toast para animar barras */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Layout Simulador Demo */
+.control-panel {
+  text-align: center;
+  max-width: 600px;
+  padding: 2rem;
+}
+
+.panel-header {
+  margin-bottom: 3rem;
+}
+
+.panel-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.05em;
+}
+
+.panel-header p {
+  color: #64748B;
+}
+
+.action-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.btn {
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  color: white;
+}
+
+.btn:active { transform: scale(0.95); }
+
+.btn--success { background-color: var(--color-success); }
+.btn--error { background-color: var(--color-error); }
+.btn--warning { background-color: var(--color-warning); color: #78350F; } /* Contraste Oscuro */
+.btn--info { background-color: var(--color-info); }
+
+/* Toast HUD Container Fixation 
+   Contenedor absoluto tipo stack
+ */
+.toast-container {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  display: flex;
+  flex-direction: column; /* Apilados de arriba a abajo */
+  gap: 1rem;
+  z-index: 9999; /* Por encima de CUALQUIER otra cosa en la web */
+  pointer-events: none; /* Crucial: Para que no interfieran clics si están vacíos. */
+}
+
+/* Toast Card - Componente Base */
+.toast {
+  position: relative; /* Para absolutar la x y la barra */
+  pointer-events: auto; /* Devolvemos el click a los Toasts vivitos */
+  
+  width: 320px;
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-toast);
+  padding: 1rem;
+  padding-left: 1.25rem;
+  overflow: hidden; /* Para que la barra de progreso de abajo no se salga del radio */
+  
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  
+  /* Animación brutal de entrada Slide up + Fade in */
+  animation: slideInBottom 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+/* Borde izquierdo gordo semántico */
+.toast::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  background-color: var(--theme-color);
+}
+
+/* Variables dinámicas según el tipo (Las asigna el padre .toast--tipo) */
+.toast--success { --theme-color: var(--color-success); }
+.toast--error { --theme-color: var(--color-error); }
+.toast--warning { --theme-color: var(--color-warning); }
+.toast--info { --theme-color: var(--color-info); }
+
+/* Icono SVG interior */
+.toast-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--theme-color);
+  margin-top: 2px; /* Alineación óptica con el texto */
+}
+
+/* El texto */
+.toast-content {
+  flex-grow: 1; /* Ocupa el espacio central restante */
+}
+
+.toast-content h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 0.25rem;
+}
+
+.toast-content p {
+  color: #64748B;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+/* La 'x' de cerrar manual */
+.toast-close {
+  background: none;
+  border: none;
+  color: #94A3B8;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.2rem;
+  border-radius: 4px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.toast-close:hover {
+  background-color: #F1F5F9;
+  color: var(--color-text);
+}
+
+/* Toast Countdown Progress Bar */
+.toast-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  background-color: var(--theme-color);
+  opacity: 0.7;
+  
+  /* Animación contínua de linear decay */
+  animation: progress var(--toast-duration) linear forwards;
+}
+
+/* Keyframes de Coreografía CSS */
+@keyframes slideInBottom {
+  from {
+    transform: translateY(100%) scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Cuando JS le pone esta clase para matarlo */
+.toast--closing {
+  animation: fadeOutRight 0.3s ease-in forwards;
+}
+
+@keyframes fadeOutRight {
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes progress {
+  from { width: 100%; }
+  to { width: 0%; }
+}

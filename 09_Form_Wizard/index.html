@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wizard (Formulario por Pasos)</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!--
+    Wizard multi-step 
+    Single Page Application Simulator
+  -->
+  <main class="wizard-container">
+    <div class="wizard-card">
+      
+      <!-- 
+        1. Indicador de Progreso Visual (Stepper)
+        A11Y: Usamos aria-current="step" para que el lector lea
+        "Paso 1 de 3, paso actual", en lugar de solo graficos ciegos.
+      -->
+      <nav class="stepper" aria-label="Progreso del formulario">
+        <ul class="stepper-list">
+          <!-- Paso 1 -->
+          <li class="step step--active" data-step="1" aria-current="step">
+            <div class="step-circle">1</div>
+            <span class="step-label">Cuenta</span>
+          </li>
+          <!-- Conector visual (Línea) -->
+          <li class="step-line" aria-hidden="true"></li>
+          <!-- Paso 2 -->
+          <li class="step" data-step="2">
+            <div class="step-circle">2</div>
+            <span class="step-label">Perfil</span>
+          </li>
+          <li class="step-line" aria-hidden="true"></li>
+          <!-- Paso 3 -->
+          <li class="step" data-step="3">
+            <div class="step-circle">3</div>
+            <span class="step-label">Finalizar</span>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- 2. El Formulario Real -->
+      <form id="wizard-form" novalidate>
+        
+        <!-- ==============================================
+             BLOQUE 1: DATOS DE CUENTA
+             ============================================== -->
+        <fieldset class="wizard-panel panel--active" id="panel-1">
+          <legend class="sr-only">Paso 1</legend>
+          <div class="panel-header">
+            <h2>Datos de Usuario</h2>
+            <p>Configura las credenciales de acceso para tu nueva cuenta.</p>
+          </div>
+
+          <div class="form-group">
+            <label for="username">Nombre de Usuario</label>
+            <input type="text" id="username" class="form-input" placeholder="ej: desarrollador_pro" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="user-email">Email de Contacto</label>
+            <input type="email" id="user-email" class="form-input" placeholder="tu@email.com" required>
+          </div>
+        </fieldset>
+
+        <!-- ==============================================
+             BLOQUE 2: PERFIL PERSONAL
+             ============================================== -->
+        <fieldset class="wizard-panel" id="panel-2" hidden>
+          <legend class="sr-only">Paso 2</legend>
+          <div class="panel-header">
+            <h2>Perfil Profesional</h2>
+            <p>Cuéntanos un poco más sobre tu experiencia y redes.</p>
+          </div>
+
+          <div class="form-group">
+            <label for="role">Especialidad</label>
+            <select id="role" class="form-input" required>
+              <option value="" disabled selected>Selecciona una opción...</option>
+              <option value="1">Desarrollador Frontend</option>
+              <option value="2">Diseñador UI/UX</option>
+              <option value="3">Fullstack Developer</option>
+              <option value="4">Project Manager</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="github">Enlace a Portfolio / GitHub</label>
+            <input type="url" id="github" class="form-input" placeholder="https://github.com/tu-usuario">
+          </div>
+        </fieldset>
+
+        <!-- ==============================================
+             BLOQUE 3: AJUSTES FINALES
+             ============================================== -->
+        <fieldset class="wizard-panel" id="panel-3" hidden>
+          <legend class="sr-only">Paso 3</legend>
+          <div class="panel-header">
+            <h2>Confirmación Final</h2>
+            <p>Revisa tus preferencias antes de completar el registro.</p>
+          </div>
+
+          <div class="form-group checkbox-group">
+            <label class="custom-checkbox-container">
+              <input type="checkbox" id="newsletter" class="sr-only-input">
+              <span class="custom-checkbox" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </span>
+              <div class="checkbox-text">
+                <strong>Recibir Novedades</strong>
+                <p>Te enviaremos tutoriales y recursos semanales.</p>
+              </div>
+            </label>
+          </div>
+
+          <div class="form-group checkbox-group">
+            <label class="custom-checkbox-container">
+              <input type="checkbox" id="terms" class="sr-only-input" required>
+              <span class="custom-checkbox" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </span>
+              <div class="checkbox-text">
+                <strong>Acepto los términos</strong>
+                <p>Confirmo que he leído la política de privacidad.</p>
+              </div>
+            </label>
+          </div>
+        </fieldset>
+
+        <!-- ==============================================
+             CONTROLES DE NAVEGACIÓN (Atrás / Siguiente)
+             ============================================== -->
+        <div class="wizard-controls">
+          <button type="button" class="btn btn-secondary" id="btn-prev" hidden>Anterior</button>
+          <div class="spacer"></div> 
+          <button type="button" class="btn btn-primary" id="btn-next">Siguiente</button>
+          <button type="submit" class="btn btn-success" id="btn-submit" hidden>Finalizar Registro</button>
+        </div>
+
+      </form>
+    </div>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>

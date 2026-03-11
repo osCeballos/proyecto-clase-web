@@ -1,0 +1,123 @@
+/* ========================================
+   1. VARIABLES Y DISEÑO BASE
+   ======================================== */
+:root {
+  --color-bg: #F1F5F9;
+  --color-surface: #FFFFFF;
+  --color-text: #334155;
+  --color-primary: #0F172A;
+  --color-accent: #6366F1;
+  --color-success: #22C55E;
+  --color-error: #EF4444;
+  --color-border: #CBD5E1;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+.header { background: var(--color-surface); padding: 1rem; border-bottom: 1px solid var(--color-border); }
+.logo { font-size: 1.25rem; font-weight: 800; max-width: 600px; margin: 0 auto; }
+.content { max-width: 600px; margin: 0 auto; padding: 4rem 1.5rem; }
+.section-header { text-align: center; margin-bottom: 3rem; }
+
+/* ========================================
+   2. FORMULARIO Y ESTADOS ASÍNCRONOS
+   ======================================== */
+.async-form {
+  background: var(--color-surface);
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px -5px rgba(0,0,0,0.1);
+  border: 1px solid var(--color-border);
+}
+
+.form-group { margin-bottom: 2rem; }
+label { display: block; font-weight: 700; margin-bottom: 0.5rem; color: #475569; }
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+input {
+  width: 100%;
+  padding: 0.9rem 2.8rem 0.9rem 1rem;
+  border: 2px solid var(--color-border);
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: all 0.2s;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+/* Infinite Loop Async Rotation Graphic Component Indicator System */
+.loader {
+  position: absolute;
+  right: 12px;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #E2E8F0;
+  border-top-color: var(--color-accent);
+  border-radius: 50%;
+  display: none;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Base Icon Node UI State Matrix Injection Target Layout Setup */
+.status-icon {
+  position: absolute;
+  right: 12px;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.status-icon.success::before { content: '✓'; color: var(--color-success); }
+.status-icon.error::before { content: '✕'; color: var(--color-error); }
+
+/* Abstract Assessment Result Reporting System Text Formatting Setup */
+.feedback-message {
+  display: block;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  font-weight: 500;
+}
+
+.feedback-message.success { color: var(--color-success); }
+.feedback-message.error { color: var(--color-error); }
+
+.help-text { font-size: 0.8rem; color: #94A3B8; }
+
+/* Dynamic Assessment Result State Modifier Style Override Pipeline */
+input.is-loading { border-color: #E2E8F0; }
+input.is-valid { border-color: var(--color-success); }
+input.is-invalid { border-color: var(--color-error); }
+
+/* Primary Request Action Button Action Hook Context Modifier System */
+.btn-submit {
+  width: 100%;
+  padding: 1rem;
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.btn-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn-submit:not(:disabled):hover { opacity: 0.9; transform: translateY(-1px); }

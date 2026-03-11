@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menú Hamburguesa Básico</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-container">
+      
+      <a href="#" class="logo" aria-label="Ir a la página de inicio">
+        CreativeUI<span style="color:var(--color-primary)">.</span>
+      </a>
+
+      <button 
+        type="button" 
+        class="menu-btn" 
+        id="menu-trigger" 
+        aria-controls="main-nav" 
+        aria-expanded="false" 
+        aria-label="Abrir menú principal"
+      >
+        <svg class="icon icon--menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+        <svg class="icon icon--close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <nav class="nav" id="main-nav" aria-label="Navegación principal">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="#" class="nav-link">Inicio</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Servicios</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Porfolio</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Equipo</a></li>
+          <li class="nav-item"><a href="#" class="nav-link nav-link--btn">Contacto</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <main class="content">
+    <div class="hero-card">
+      <h1>Gestión de Navegación</h1>
+      <p>Aprende a crear menús laterales interactivos con estados de visualización controlados por JavaScript.</p>
+    </div>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>

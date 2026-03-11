@@ -1,0 +1,225 @@
+/* Design Tokens Globales */
+   :root {
+    --color-bg: #F8FAFC;
+    --color-header: #FFFFFF;
+    --color-text: #0F172A;
+    --color-text-muted: #64748B;
+    --color-primary: #ec4899; /* Pink as accent */
+    --color-border: #E2E8F0;
+    --color-overlay: rgba(15, 23, 42, 0.4); /* Oscurecimiento de fondo */
+    
+    --shadow-header: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    --shadow-drawer: -10px 0 25px -5px rgba(0, 0, 0, 0.1);
+    
+    --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  
+  /* Base Header Layer Layout */
+  .header {
+    background-color: var(--color-header);
+    box-shadow: var(--shadow-header);
+    position: relative;
+    z-index: 100;
+  }
+  
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--color-text);
+    text-decoration: none;
+    letter-spacing: -0.05em;
+    position: relative;
+    z-index: 102;
+  }
+  
+  /* Mobile Action Trigger Hamburguer Icon */
+  .menu-btn {
+    background: transparent;
+    border: none;
+    color: var(--color-text);
+    cursor: pointer;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    position: relative;
+    z-index: 103;
+    transition: background-color 0.2s;
+  }
+  
+  @media (hover: hover) {
+    .menu-btn:hover { background-color: var(--color-bg); }
+  }
+  
+  .menu-btn:focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+  
+  .hamburger-icon {
+    width: 26px;
+    height: 26px;
+  }
+  
+  /* Morphing Lines Architecture Setting */
+  .line-top, .line-mid, .line-bot {
+    transform-origin: center;
+    transition: transform var(--transition-smooth), opacity var(--transition-smooth);
+  }
+  .menu-btn[aria-expanded="true"] .line-top {
+    transform: translateY(6px) rotate(45deg);
+  }
+  
+  .menu-btn[aria-expanded="true"] .line-mid {
+    opacity: 0;
+    transform: scale(0);
+  }
+  
+  .menu-btn[aria-expanded="true"] .line-bot {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+  
+  /* Modal Backdrop Dimming Component */
+  .nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--color-overlay);
+    backdrop-filter: blur(3px); /* Difumina lo de atrás, muy Premium iOS */
+    z-index: 101; /* Debajo de Nav y Botón, encima del resto de la web */
+    
+    visibility: hidden;
+    transition: opacity var(--transition-smooth), visibility var(--transition-smooth);
+  }
+  
+  .header.is-open .nav-overlay {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  /* Drawer Nav Off-Canvas GPU Accelerated */
+  @media (max-width: 767px) {
+    .nav {
+      padding-top: 5rem;
+      
+      /* State Zero Closed Matrix Translate */
+      transform: translateX(100%);
+      visibility: hidden;
+      
+      will-change: transform, visibility;
+      transition: transform var(--transition-smooth), visibility var(--transition-smooth);
+    }
+  
+    /* Native Position Activated View */
+    .header.is-open .nav {
+      transform: translateX(0);
+      visibility: visible;
+    }
+    
+    .nav-list {
+      flex-direction: column;
+      padding: 1.5rem;
+      gap: 0.75rem;
+    }
+    
+    .nav-link {
+      font-size: 1.25rem;
+      padding: 1rem;
+    }
+  }
+  
+  /* Estilos comunes Enlaces */
+  .nav-list {
+    list-style: none;
+    display: flex;
+  }
+  
+  .nav-link {
+    display: block;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: color 0.2s, background-color 0.2s, transform 0.2s;
+  }
+  
+  .nav-link:hover {
+    color: var(--color-text);
+    background-color: rgba(0, 0, 0, 0.03);
+  }
+  
+  .nav-link--btn {
+    background-color: var(--color-primary);
+    color: white;
+    text-align: center;
+    font-weight: 600;
+  }
+  
+  .nav-link--btn:hover {
+    background-color: #db2777;
+    color: white;
+  }
+  
+  /* Wide Screen Desktop Horizontal Overrides */
+  @media (min-width: 768px) {
+    .menu-btn { display: none; }
+    
+    .nav-overlay { display: none; }
+    
+    .nav {
+      position: static;
+      width: auto;
+      height: auto;
+      padding-top: 0;
+      transform: none;
+      visibility: visible;
+      box-shadow: none;
+      background: transparent;
+    }
+    
+    .nav-list {
+      flex-direction: row;
+      align-items: center;
+      gap: 1rem;
+      padding: 0;
+    }
+    
+    .nav-link {
+      font-size: 0.95rem;
+      padding: 0.5rem 1rem;
+    }
+    
+    .nav-link:hover { background-color: transparent; color: var(--color-primary); }
+  }
+  
+  /* Contenido Decorativo */
+  .content { padding: 4rem 1.5rem; max-width: 600px; margin: 0 auto; }
+  .hero-card { background: white; padding: 2.5rem; border-radius: 12px; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+  .hero-card h1 { font-size: 1.8rem; margin-bottom: 1rem; }
+  .hero-card p { color: var(--color-text-muted); line-height: 1.6; margin-bottom: 1rem; }

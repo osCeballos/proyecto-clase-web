@@ -1,0 +1,174 @@
+/* Variables CSS globales */
+:root {
+  --color-text-light: #F8FAFC;
+  --color-overlay: rgba(15, 23, 42, 0.6); /* Capa oscura para leer bien el texto sobre la foto */
+  --color-accent: #38BDF8;
+  
+  --transition-slide: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: #0F172A; /* Fondo oscuro por defecto */
+}
+
+/* Estilos base del Hero Slider */
+.hero-slider {
+  position: relative;
+  width: 100vw;
+  height: 100vh; /* Ocupa toda la pantalla */
+  overflow: hidden; /* Cortamos lo que sobra por los lados */
+}
+
+/* El contenedor mantiene todas las slides preparadas */
+.slides-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* Estrategia de Animación: Crossfade (fundido) cambiando la opacidad */
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0; /* Ocultas por defecto */
+  visibility: hidden; /* A11y: las ocultamos de verdad de lectores de teclado si no se ven */
+  transition: opacity 0.8s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide--active {
+  opacity: 1; /* Esta es la que mostramos */
+  visibility: visible;
+  z-index: 10;
+}
+
+/* Imagen de fondo de la slide */
+.slide__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Recorta la imagen para que llene el hueco sin deformarse */
+  z-index: -2;
+  transform: scale(1.05); /* Escala inicial */
+  transition: transform 6s ease-out; /* Una transición larguísima para el Ken Burns */
+}
+
+/* El efecto visual Ken Burns cuando la slide es activa */
+.slide--active .slide__bg {
+  transform: scale(1);
+}
+
+/* Capa oscura (Overlay) para asegurar Contraste (a11y) */
+.slide::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-overlay);
+  z-index: -1;
+}
+
+/* Contenido de texto en el centro */
+.slide__content {
+  text-align: center;
+  color: var(--color-text-light);
+  padding: 0 2rem;
+  max-width: 800px;
+  /* Animación de entrada del texto (entra desde abajo) */
+  transform: translateY(30px);
+  opacity: 0;
+  transition: all 0.8s ease-out 0.3s; /* Delay de 0.3s para que entre después de la foto */
+}
+
+.slide--active .slide__content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.slide__content h2 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
+
+.slide__content p {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: 300;
+  opacity: 0.9;
+}
+
+/* Controles de la interfaz (Botones y puntos de navegación) */
+.slider-controls {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.slider-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%; /* Botones circulares */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
+}
+
+.slider-btn:hover,
+.slider-btn:focus-visible {
+  background: white;
+  color: #0F172A;
+  transform: scale(1.1); /* Feedback visual: crece al pasar el ratón */
+  outline: none;
+}
+
+.slider-dots {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot--active {
+  background: var(--color-accent);
+  transform: scale(1.3); /* Destaca visualmente el dot activo */
+}
+
+.dot:hover,
+.dot:focus-visible {
+  background: rgba(255, 255, 255, 0.8);
+  outline: none;
+}

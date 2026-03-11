@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flip Card 3D</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="gallery">
+    
+    <div class="scene">
+      
+      <article class="card" tabindex="0" role="button" aria-expanded="false">
+        
+        <div class="card__face card__face--front">
+          <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=400" alt="Zapatilla Running Pro" class="card__img">
+          <div class="card__content">
+            <h2 class="card__title">Running Pro 2024</h2>
+            <p class="card__price">$99.99</p>
+            <span class="card__hint">Girar para ver detalles ↺</span>
+          </div>
+        </div>
+        
+        <div class="card__face card__face--back" aria-hidden="true">
+          <div class="back-content">
+            <h3 class="back-title">Talla</h3>
+            <div class="size-grid">
+              <button type="button" class="size-box">38</button>
+              <button type="button" class="size-box">39</button>
+              <button type="button" class="size-box">40</button>
+              <button type="button" class="size-box">41</button>
+              <button type="button" class="size-box" disabled>42</button>
+              <button type="button" class="size-box">43</button>
+            </div>
+            
+            <h3 class="back-title">Materiales</h3>
+            <ul class="material-list">
+              <li>Tejido transpirable</li>
+              <li>Suela de tracción alta</li>
+              <li>Amortiguación reactiva</li>
+            </ul>
+            
+            <button type="button" class="btn-buy">Comprar ahora</button>
+          </div>
+        </div>
+
+      </article>
+    </div>
+
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>

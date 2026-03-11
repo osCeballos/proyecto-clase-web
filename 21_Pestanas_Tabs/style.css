@@ -1,0 +1,122 @@
+/* ========================================
+   1. VARIABLES Y BASES
+   ======================================== */
+:root {
+  --color-bg: #F8FAFC;
+  --color-surface: #FFFFFF;
+  --color-text: #1E293B;
+  --color-primary: #6366F1; /* Indigo */
+  --color-primary-soft: #EEF2FF;
+  --color-border: #E2E8F0;
+  
+  --transition-speed: 0.3s;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Outfit', system-ui, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+.header { background: var(--color-surface); padding: 1rem; border-bottom: 1px solid var(--color-border); }
+.logo { font-size: 1.25rem; font-weight: 800; max-width: 900px; margin: 0 auto; }
+.content { max-width: 900px; margin: 0 auto; padding: 4rem 1.5rem; }
+
+.section-header { margin-bottom: 3rem; text-align: center; }
+.section-header h1 { font-size: 2.5rem; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+
+/* ========================================
+   2. NAVEGACIÓN (FLEXBOX)
+   ======================================== */
+.tabs-container {
+  background: var(--color-surface);
+  border-radius: 20px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+}
+
+.tabs-nav {
+  display: flex;
+  background: var(--color-bg);
+  padding: 0.5rem;
+  position: relative;
+  gap: 0.25rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 1rem;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #64748B;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: all 0.2s;
+  position: relative;
+  z-index: 2;
+}
+
+.tab-btn.active {
+  color: var(--color-primary);
+  background: var(--color-surface);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.tab-btn:hover:not(.active) {
+  background: rgba(0,0,0,0.02);
+  color: var(--color-text);
+}
+
+/* ========================================
+   3. PANELES Y ANIMACIÓN
+   ======================================== */
+.tabs-panels {
+  padding: 2.5rem;
+  position: relative;
+  min-height: 250px;
+}
+
+.tab-panel {
+  display: none;
+  animation: fadeIn 0.4s ease-out;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+.tab-panel h2 {
+  margin-bottom: 1rem;
+  color: #0F172A;
+}
+
+.tab-panel p {
+  line-height: 1.8;
+  color: #475569;
+}
+
+/* Entry Motion Animation Subsystem */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Media Match Baseline Target */
+@media (max-width: 600px) {
+  .tabs-nav {
+    flex-direction: column;
+  }
+}

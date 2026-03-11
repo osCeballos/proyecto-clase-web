@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menú Animado</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Responsive Animated Navigation Header Off-Canvas -->
+  <header class="header">
+    <div class="header-container">
+      
+      <a href="#" class="logo" aria-label="Ir a la página de inicio">
+        MotionDesign<span style="color:var(--color-primary)">.</span>
+      </a>
+
+      <!-- Mobile Hamburger Button Trigger -->
+      <button 
+        type="button" 
+        class="menu-btn" 
+        id="menu-trigger" 
+        aria-controls="main-nav" 
+        aria-expanded="false" 
+        aria-label="Abrir menú principal"
+      >
+        <!-- Cross-Morphing SVG Lines Matrix -->
+        <svg class="hamburger-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <line class="line-top" x1="3" y1="6" x2="21" y2="6"></line>
+          <line class="line-mid" x1="3" y1="12" x2="21" y2="12"></line>
+          <line class="line-bot" x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+      <!-- Transparent Backdrop Focus Overlay -->
+      <div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
+
+      <!-- Drawer Mobile Navigation Content Sidebar -->
+      <nav class="nav" id="main-nav" aria-label="Navegación principal">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="#" class="nav-link">Inicio</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Servicios</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Porfolio</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Equipo</a></li>
+          <li class="nav-item"><a href="#" class="nav-link nav-link--btn">Contacto</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <main class="content">
+    <div class="hero-card">
+      <h1>Animaciones Persuasivas</h1>
+      <p>Descubre cómo las transiciones suaves mejoran la experiencia de usuario y el flujo de navegación intuitiva.</p>
+    </div>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>

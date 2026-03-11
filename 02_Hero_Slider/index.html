@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hero Slider Automático</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Configuración mínima de accesibilidad (A11Y) para que los lectores de pantalla reconozcan el carrusel -->
+  <section class="hero-slider" aria-roledescription="carousel" aria-label="Imágenes destacadas">
+    
+    <!-- Contenedor principal de las diapositivas -->
+    <div class="slides-container" id="slider-track">
+      <!-- Slide 1 (Activa por defecto) -->
+      <article class="slide slide--active" data-index="0" aria-roledescription="slide">
+        <img src="https://images.unsplash.com/photo-1541462608143-67571c6738dd?auto=format&fit=crop&q=80&w=1920" alt="Lorem ipsum dolor" class="slide__bg">
+        <div class="slide__content">
+          <h2>Diseño de Interfaces</h2>
+          <p>Creamos experiencias visuales únicas centradas en el usuario final.</p>
+        </div>
+      </article>
+
+      <!-- Slide 2 -->
+      <article class="slide" data-index="1" aria-roledescription="slide" aria-hidden="true">
+        <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=1920" alt="Pellentesque habitant" class="slide__bg">
+        <div class="slide__content">
+          <h2>Desarrollo Frontend</h2>
+          <p>Dominamos las herramientas más potentes para crear la web del futuro.</p>
+        </div>
+      </article>
+
+      <!-- Slide 3 -->
+      <article class="slide" data-index="2" aria-roledescription="slide" aria-hidden="true">
+        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=1920" alt="Aenean ultricies mi" class="slide__bg">
+        <div class="slide__content">
+          <h2>Estrategia Digital</h2>
+          <p>Impulsamos tu presencia online con soluciones a medida y escalables.</p>
+        </div>
+      </article>
+    </div>
+
+    <!-- Elementos de Control visual inferior -->
+    <div class="slider-controls">
+      <!-- Indicadores de posición (Dots) -->
+      <div class="slider-dots" id="dots-container" role="tablist" aria-label="Elegir diapositiva">
+        <!-- Los dots se generarán o controlarán desde JS -->
+        <button class="dot dot--active" aria-label="Ir a diapositiva 1" role="tab" aria-selected="true" data-index="0"></button>
+        <button class="dot" aria-label="Ir a diapositiva 2" role="tab" aria-selected="false" data-index="1"></button>
+        <button class="dot" aria-label="Ir a diapositiva 3" role="tab" aria-selected="false" data-index="2"></button>
+      </div>
+
+    </div>
+
+  </section>
+
+  <script src="main.js"></script>
+</body>
+</html>

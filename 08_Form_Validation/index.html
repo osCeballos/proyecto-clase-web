@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Validación en Vivo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="form-container">
+    <div class="form-card">
+      <header class="form-header">
+        <h1>Crea tu Cuenta</h1>
+        <p>Únete a nuestra comunidad de desarrolladores y accede a contenido exclusivo.</p>
+      </header>
+
+      <!-- 
+        A11Y (Accesibilidad): 
+        novalidate: Desactivamos el comportamiento pop-up feo de "Please fill out this field" de Chrome
+        para controlar nosotros enteramente la experiencia de diseño y errores A11y.
+      -->
+      <form id="register-form" novalidate autocomplete="off">
+        
+        <div class="form-group">
+          <label for="email" class="form-label">Correo Electrónico</label>
+          <div class="input-wrapper">
+            <input 
+              type="email" 
+              id="email" 
+              class="form-input" 
+              placeholder="hola@tudominio.com"
+              aria-invalid="false"
+              aria-describedby="email-error"
+            >
+            <span class="icon-status" aria-hidden="true"></span>
+          </div>
+          <p class="error-text" id="email-error" aria-live="polite"></p>
+        </div>
+
+        <div class="form-group">
+          <label for="password" class="form-label">Contraseña Segura</label>
+          <div class="input-wrapper">
+            <input 
+              type="password" 
+              id="password" 
+              class="form-input" 
+              placeholder="Mínimo 8 caracteres"
+              aria-invalid="false"
+              aria-describedby="password-error"
+            >
+            <button type="button" id="toggle-password" class="btn-toggle-pwd" aria-label="Mostrar contraseña">
+              <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+            </button>
+          </div>
+          <p class="error-text" id="password-error" aria-live="polite"></p>
+          
+          <ul class="pwd-rules">
+            <li id="rule-length" class="rule">Mínimo 8 caracteres</li>
+            <li id="rule-number" class="rule">Al menos un número</li>
+          </ul>
+        </div>
+
+        <button type="submit" class="btn-submit" id="btn-submit" disabled>Registrarse</button>
+
+      </form>
+    </div>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>

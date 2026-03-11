@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mouse Parallax</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="hero" id="parallax-container">
+    <div class="hero-content">
+      <h1>Experiencia Inmersiva</h1>
+      <p>Consectetur adipiscing elit. Nullam in dui mauris. Mueve el ratón por la pantalla para ver el efecto Parallax.</p>
+    </div>
+
+    <!-- 
+      Elementos Decorativos:
+      El atributo 'data-speed' controla cuánto se mueve cada elemento.
+    -->
+    <div class="shapes-layer">
+      <!-- Círculo grande, se mueve mucho -->
+      <div class="shape shape--circle" data-speed="45" aria-hidden="true"></div>
+      
+      <!-- Cuadrado mediano, se mueve moderado pero en dirección contraria (valor negativo) -->
+      <div class="shape shape--square" data-speed="-25" aria-hidden="true"></div>
+      
+      <!-- Triángulo pequeño, se mueve muy poco para simular gran lejanía -->
+      <div class="shape shape--triangle" data-speed="15" aria-hidden="true">
+        <svg viewBox="0 0 100 100"><polygon points="50,15 100,100 0,100" fill="currentColor"/></svg>
+      </div>
+
+      <!-- Puntos abstractos que flotan muy suavemente -->
+      <div class="shape shape--dots" data-speed="-10" aria-hidden="true"></div>
+    </div>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galería Filtrable</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="gallery-section">
+    <div class="container">
+      
+      <header class="gallery-header">
+        <h1>Portafolio Creativo</h1>
+        <p>Explora nuestra selección de proyectos de diseño UI/UX y Branding.</p>
+        
+        <!-- Navegación de Filtros (Tabs) -->
+        <nav class="filters" aria-label="Filtros de Portfolio" role="tablist">
+          <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">Todos</button>
+          <button class="filter-btn" data-filter="ui" role="tab" aria-selected="false">UI Design</button>
+          <button class="filter-btn" data-filter="ux" role="tab" aria-selected="false">UX Research</button>
+          <button class="filter-btn" data-filter="branding" role="tab" aria-selected="false">Branding</button>
+        </nav>
+      </header>
+
+      <!-- Contenedor del Grid de Galería -->
+      <section class="gallery-grid" id="gallery-grid" aria-live="polite">
+        <!-- Las cards se inyectarán aquí dinámicamente -->
+      </section>
+
+      <!-- Estado vacío (Empty State) -->
+      <div class="empty-state" id="empty-state" hidden>
+        <svg viewBox="0 0 24 24" width="48" height="48" stroke="currentColor" fill="none"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+        <h3>Sin resultados</h3>
+        <p>No se han encontrado proyectos en esta categoría.</p>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>

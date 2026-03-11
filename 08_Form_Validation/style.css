@@ -1,0 +1,229 @@
+/* Variables de Diseño CSS */
+:root {
+  --color-bg: #F9FAFB;
+  --color-text: #1F2937;
+  --color-muted: #6B7280;
+  --color-surface: #FFFFFF;
+  --color-border: #D1D5DB;
+  
+  --color-primary: #4F46E5; /* Indigo 600 */
+  --color-primary-hover: #4338CA;
+  
+  --color-error: #EF4444; /* Rojo semántico */
+  --color-error-bg: #FEF2F2;
+  --color-success: #10B981; /* Verde semántico */
+  --color-success-bg: #ECFDF5;
+  
+  --radius-md: 8px;
+  --transition-fast: 0.2s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+/* Contexto principal de vista */
+.form-container {
+  width: 100%;
+  max-width: 480px;
+  padding: 1rem;
+}
+
+.form-card {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-md);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  padding: 2.5rem;
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.form-header h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.form-header p {
+  color: var(--color-muted);
+  font-size: 0.95rem;
+}
+
+/* Estilos Visuales de Inputs */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+/* Wrap para contención controlada de componentes con Posición Absoluta */
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  outline: none; /* Quitamos el feo halo azul por defecto */
+  transition: all var(--transition-fast);
+}
+
+/* Halo enfocado interactivo (Focus State) */
+.form-input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15); /* Halo personalizado */
+}
+
+/* Estados Activos Funcionales y Verificaciones Variantes A11y */
+/* 1. Estado de Error */
+.form-input.is-invalid {
+  border-color: var(--color-error);
+  background-color: var(--color-error-bg);
+}
+
+.form-input.is-invalid:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
+}
+
+/* 2. Estado de Éxito */
+.form-input.is-valid {
+  border-color: var(--color-success);
+  background-color: var(--color-success-bg);
+}
+
+.form-input.is-valid:focus {
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+}
+
+/* Indicadores estáticos flotantes de validación */
+.icon-status {
+  position: absolute;
+  right: 1rem;
+  pointer-events: none;
+  font-size: 1.2rem;
+  opacity: 0; /* Oculto por defecto */
+  transition: opacity var(--transition-fast);
+}
+
+.form-input.is-valid + .icon-status {
+  opacity: 1;
+  color: var(--color-success);
+}
+/* Inyección visual del check y cruz cruz sin modificar el HTML */
+.form-input.is-valid + .icon-status::before { content: "✓"; }
+.form-input.is-invalid + .icon-status::before { content: "✕"; color: var(--color-error); }
+.form-input.is-invalid + .icon-status { opacity: 1; }
+
+/* El texto de error que nace debajo */
+.error-text {
+  color: var(--color-error);
+  font-size: 0.85rem;
+  margin-top: 0.35rem;
+  min-height: 20px; /* Evita que el formulario salte de altura (Layout Shift) al aparecer el texto */
+  display: block;
+}
+
+/* Controles Auxiliares: Botones interactivos adicionales y Tooltips visuales de Estado */
+/* El botón de Mostrar Contraseña */
+.btn-toggle-pwd {
+  position: absolute;
+  right: 1rem; /* El icono de estado se moverá al usar padding en js */
+  background: none;
+  border: none;
+  color: var(--color-muted);
+  cursor: pointer;
+  padding: 0.2rem;
+  transition: color var(--transition-fast);
+}
+
+.btn-toggle-pwd:hover {
+  color: var(--color-text);
+}
+
+.form-input[type="password"] {
+  padding-right: 2.5rem; /* Deja hueco al ojo */
+}
+
+/* Reglas de la contraseña */
+.pwd-rules {
+  list-style: none;
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.rule {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color var(--transition-fast);
+}
+
+.rule::before {
+  content: "•";
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.rule.passed {
+  color: var(--color-success);
+}
+.rule.passed::before {
+  content: "✓";
+  font-size: 0.9rem;
+}
+
+/* El botón gigante principal */
+.btn-submit {
+  width: 100%;
+  padding: 0.85rem;
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+  margin-top: 1rem;
+}
+
+.btn-submit:hover:not(:disabled) {
+  background-color: var(--color-primary-hover);
+}
+
+.btn-submit:disabled {
+  background-color: var(--color-border);
+  cursor: not-allowed;
+  opacity: 0.7;
+}

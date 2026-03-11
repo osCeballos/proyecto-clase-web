@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Card Expandible</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Layout Expandable Card Wrapper -->
+  <main class="storefront">
+    
+    <article class="expandable-card">
+      
+      <div class="card__header">
+        <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&q=80&w=600" alt="Zapatillas Urban Style" class="card__img">
+      </div>
+
+      <!-- ZONA DE INFORMACIÓN -->
+      <div class="card__body">
+        
+        <div class="card__visible-content">
+          <div class="card__meta">
+            <h2 class="card__title">Urban Style 2.0</h2>
+            <p class="card__price">$99.99</p>
+          </div>
+          
+          <button type="button" class="btn-expand" id="trigger-btn" aria-expanded="false" aria-controls="collapsible-section">
+            <span class="btn-expand__text">Detalles</span>
+            <svg class="icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+        </div>
+
+        <div class="card__grid-wrapper" id="collapsible-section">
+          <div class="card__collapsible-content">
+            
+            <p class="product-description">
+              Diseñadas para el día a día, estas zapatillas combinan comodidad extrema con un estilo urbano inconfundible. Materiales premium y durabilidad garantizada.
+            </p>
+            
+            <div class="actions">
+              <button class="btn-primary">Añadir</button>
+              <button class="btn-secondary" aria-label="Añadir a favoritos">♡</button>
+            </div>
+            
+          </div>
+        </div>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>

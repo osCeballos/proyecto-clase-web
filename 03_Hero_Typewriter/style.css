@@ -1,0 +1,94 @@
+/* Variables CSS de diseño base */
+:root {
+  --color-bg: #0F172A; 
+  --color-text: #F8FAFC; 
+  --color-muted: #94A3B8; 
+  --color-primary: #38BDF8; 
+  --color-cursor: #38BDF8;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+/* Composición visual central usando Grid */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+  background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.1), transparent 40%),
+              radial-gradient(circle at bottom left, rgba(56, 189, 248, 0.05), transparent 40%);
+}
+
+.hero-container {
+  max-width: 800px;
+  width: 100%;
+}
+
+/* Tipografía y jerarquía */
+.eyebrow {
+  color: var(--color-primary);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.title {
+  font-size: clamp(2.5rem, 5vw, 4.5rem); 
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+  /* Bloqueo de altura para evitar Layout Shift (saltos) al reescribir la frase */
+  min-height: 120px; 
+}
+
+.typewriter-text {
+  color: var(--color-text);
+}
+
+.subtitle {
+  color: var(--color-muted);
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
+
+/* Microinteracciones para botones */
+.cta-btn {
+  background: var(--color-text);
+  color: var(--color-bg);
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s ease;
+  will-change: transform;
+}
+
+.cta-btn:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 10px 25px -5px rgba(56, 189, 248, 0.3);
+}
+
+/* Estilos del cursor añadidos visualmente */
+.typed-cursor {
+  color: var(--color-cursor);
+  font-size: 1em;
+  font-weight: 300;
+}

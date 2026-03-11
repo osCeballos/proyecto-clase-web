@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add to Cart</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Store Cart Interactive Button -->
+  <main class="product-showcase">
+    
+    <article class="product-card">
+      <div class="product-img-box">
+        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=600" alt="Zapatilla deportiva AirMax" class="product-img">
+      </div>
+      
+      <div class="product-info">
+        <h1 class="product-title">Nike Air Max 270</h1>
+        <p class="product-price">$99.99</p>
+        
+        <!-- Interactive CTA Trigger -->
+        <button class="btn-cart" id="addToCartBtn" aria-live="assertive">
+          
+          <!-- Default State -->
+          <span class="btn-text btn-text--default">Añadir al Carrito</span>
+          <svg class="icon icon-cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+          
+          <!-- Loading State -->
+          <svg class="icon icon-spinner" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="6"></line><line x1="12" y1="18" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="6" y2="12"></line><line x1="18" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line></svg>
+          
+          <!-- Success State -->
+          <span class="btn-text btn-text--success">¡Añadido!</span>
+          <svg class="icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          
+        </button>
+      </div>
+    </article>
+
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>

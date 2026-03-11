@@ -1,0 +1,341 @@
+/* Design Tokens Globales */
+:root {
+  --color-bg: #E2E8F0; /* Slate 200 */
+  --color-surface: #FFFFFF;
+  --color-text: #0F172A; /* Slate 900 */
+  --color-muted: #64748B; /* Slate 500 */
+  --color-border: #CBD5E1; /* Slate 300 */
+  
+  --color-primary: #3B82F6; /* Blue 500 */
+  --color-success: #10B981; /* Emerald 500 */
+  
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --radius-xl: 16px;
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+/* Contenedor Principal de la Tarjeta */
+.wizard-container {
+  width: 100%;
+  max-width: 550px;
+}
+
+.wizard-card {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  padding: 2.5rem;
+  overflow: hidden; /* Mantiene bordes redondeados al animar cosas internas */
+}
+
+/* Stepper Visual (Navegador de Pasos) */
+.stepper {
+  margin-bottom: 2.5rem;
+}
+
+.stepper-list {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 2;
+}
+
+.step-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-border);
+  color: var(--color-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: all var(--transition-normal);
+}
+
+.step-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: color var(--transition-normal);
+}
+
+/* La línea conectora entre círculos */
+.step-line {
+  flex-grow: 1; /* Ocupa el espacio restante entre nodos */
+  height: 2px;
+  background-color: var(--color-border);
+  margin-top: -18px; /* Lo sube para alinearlo al medio del círculo */
+  z-index: 1;
+  transition: background-color var(--transition-normal);
+}
+
+/* Estados reactivos de pasos (Current/Done) */
+.step--active .step-circle {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary);
+  color: white;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15); /* Halo de foco */
+}
+
+.step--active .step-label {
+  color: var(--color-primary);
+}
+
+.step--done .step-circle {
+  border-color: var(--color-primary);
+  background-color: var(--color-surface);
+  color: var(--color-primary);
+}
+.step-line.line--filled {
+  background-color: var(--color-primary);
+}
+
+
+/* Interfaz de Formularios Componentizados */
+fieldset {
+  border: none;
+  min-width: 0; /* Arregla bug de grids en inputs largos */
+}
+
+/* Helper de Accesibilidad Oculta Visualmente */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.panel-header {
+  margin-bottom: 2rem;
+}
+
+.panel-header h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.panel-header p {
+  color: var(--color-muted);
+  font-size: 0.95rem;
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-group label:not(.custom-checkbox-container) {
+  display: block;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 0.4rem;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 1rem;
+  outline: none;
+  transition: box-shadow var(--transition-normal), border-color var(--transition-normal);
+}
+
+.form-input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+/* Sanitización visual de selectores nativos */
+select.form-input {
+  cursor: pointer;
+  appearance: none; /* Anula el diseño asqueroso de Windows/Mac para rehacerlo limpio */
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%2364748B%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem top 50%;
+  background-size: 0.65em auto;
+}
+
+/* Validación suave al estilo CSS puro (Rojo al salir si falló "required") */
+.form-input:not(:placeholder-shown):invalid {
+  border-color: #EF4444;
+}
+
+
+/* Componente Checkbox Personalizado (Hack Visual) */
+.sr-only-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.custom-checkbox-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.custom-checkbox-container:hover {
+  background-color: #F8FAFC;
+}
+
+/* Render visible del check caja */
+.custom-checkbox {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0; /* Que no se aplaste si hay mucho texto */
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-normal);
+}
+
+.custom-checkbox svg {
+  width: 14px;
+  height: 14px;
+  opacity: 0;
+  transform: scale(0.5); /* Entra pequeñito y bota visualmente */
+  transition: all var(--transition-normal);
+}
+
+/* Modificadores lógicos vinculados (+) */
+.sr-only-input:checked + .custom-checkbox {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.sr-only-input:checked + .custom-checkbox svg {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* A11y: Foco visible navegatorio */
+.sr-only-input:focus + .custom-checkbox {
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+.checkbox-text strong {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--color-text);
+}
+.checkbox-text p {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+}
+
+
+/* Botones de Control de Formulario */
+.wizard-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #E2E8F0;
+}
+
+.spacer {
+  flex-grow: 1;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  border: none;
+}
+
+.btn-secondary {
+  background-color: var(--color-surface);
+  color: var(--color-muted);
+  border: 1px solid var(--color-border);
+}
+
+.btn-secondary:hover {
+  background-color: #F8FAFC;
+  color: var(--color-text);
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #2563EB;
+  box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
+}
+
+.btn-success {
+  background-color: var(--color-success);
+  color: white;
+  animation: pulse 2s infinite; /* Da ganas de clickarlo! */
+}
+
+/* Animación de entrada de los paneles de pasos */
+.wizard-panel {
+  animation: slideFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+  70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}

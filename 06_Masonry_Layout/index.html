@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Masonry Layout Estilo Pinterest</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="page-container">
+    <header class="page-header">
+      <h1>Muro de Inspiración</h1>
+      <p>Una colección visual de arte digital y fotografía moderna.</p>
+    </header>
+
+    <!-- 
+      El Contenedor Masonry:
+      Menú accesible usando lista UL para que los lectores de pantalla puedan
+      anunciar el número total de elementos.
+    -->
+    <ul class="masonry-grid" id="masonry" aria-label="Galería de inspiración">
+      <!-- 
+        Las fotos tienen diferentes proporciones (altura). 
+        El reto técnico es lograr que encajen sin dejar huecos en blanco entre filas.
+      -->
+
+      <!-- Item 1 (Vertical) -->
+      <li class="masonry-item">
+        <article class="masonry-card">
+          <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=400&h=400" alt="Lorem 1" loading="lazy">
+          <div class="card-overlay" aria-hidden="true">
+            <span class="btn-save">Guardar</span>
+          </div>
+        </article>
+      </li>
+
+      <!-- Item 2 (Cuadrada) -->
+      <li class="masonry-item">
+        <article class="masonry-card">
+          <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=400&h=400" alt="Lorem 2" loading="lazy">
+          <div class="card-overlay" aria-hidden="true">
+            <span class="btn-save">Guardar</span>
+          </div>
+        </article>
+      </li>
+
+      <!-- Item 3 (Panorámica / Horizontal) -->
+      <li class="masonry-item">
+        <article class="masonry-card">
+          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=400&h=250" alt="Lorem 3" loading="lazy">
+          <div class="card-overlay" aria-hidden="true">
+            <span class="btn-save">Guardar</span>
+          </div>
+        </article>
+      </li>
+
+      <!-- Item 4 (Muy Vertical) -->
+      <li class="masonry-item">
+        <article class="masonry-card">
+          <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=400&h=700" alt="Lorem 4" loading="lazy">
+          <div class="card-overlay" aria-hidden="true">
+            <span class="btn-save">Guardar</span>
+          </div>
+        </article>
+      </li>
+
+      <!-- Item 5 (Cuadrada) -->
+      <li class="masonry-item">
+        <article class="masonry-card">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=400&h=450" alt="Lorem 5" loading="lazy">
+          <div class="card-overlay" aria-hidden="true">
+            <span class="btn-save">Guardar</span>
+          </div>
+        </article>
+      </li>
+
+      <!-- Item 6 (Vertical Extra) -->
+      <li class="masonry-item">
+        <article class="masonry-card">
+          <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&q=80&w=400&h=550" alt="Lorem 6" loading="lazy">
+          <div class="card-overlay" aria-hidden="true">
+            <span class="btn-save">Guardar</span>
+          </div>
+        </article>
+      </li>
+      
+      <!-- Item 7 (Panorámica 2) -->
+      <li class="masonry-item">
+        <article class="masonry-card">
+          <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=400&h=300" alt="Lorem 7" loading="lazy">
+          <div class="card-overlay" aria-hidden="true">
+            <span class="btn-save">Lorem</span>
+          </div>
+        </article>
+      </li>
+
+    </ul>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>

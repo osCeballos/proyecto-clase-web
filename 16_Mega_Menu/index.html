@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mega Menú</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-container">
+      
+      <a href="#" class="logo" aria-label="Ir al inicio">
+        Brand<span style="color:var(--color-primary)">.</span>
+      </a>
+
+      <nav class="nav" aria-label="Navegación principal">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="#" class="nav-link">Servicios</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Proyectos</a></li>
+          
+          <li class="nav-item has-mega-menu">
+            <button 
+              type="button" 
+              class="nav-link btn-mega" 
+              id="mega-trigger" 
+              aria-controls="mega-menu-panel" 
+              aria-expanded="false"
+            >
+              Explorar
+              <svg class="icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+
+            <div class="mega-menu" id="mega-menu-panel" aria-hidden="true" tabindex="-1">
+              <div class="mega-menu__inner">
+                
+                <div class="mega-group">
+                  <h3 class="mega-title" id="title-1">Desarrollo</h3>
+                  <ul aria-labelledby="title-1">
+                    <li><a href="#">Web Corporativas</a></li>
+                    <li><a href="#">Tiendas Online</a></li>
+                    <li><a href="#">Apps a Medida</a></li>
+                  </ul>
+                </div>
+
+                <div class="mega-group">
+                  <h3 class="mega-title" id="title-2">Diseño UI/UX</h3>
+                  <ul aria-labelledby="title-2">
+                    <li><a href="#">Investigación</a></li>
+                    <li><a href="#">Prototipado</a></li>
+                    <li><a href="#">Test de Usuario</a></li>
+                  </ul>
+                </div>
+
+                <div class="mega-card">
+                  <div class="mega-card__image"></div>
+                  <div class="mega-card__content">
+                    <h4>¿Necesitas ayuda?</h4>
+                    <p>Nisi ut aliquip ex ea commodo consequat.</p>
+                    <a href="#" class="btn-primary">Saber más</a>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <main class="content">
+    <div class="hero-card">
+      <h1>Sistemas de Navegación Complejos</h1>
+      <p>Abre el panel "Sit Amet" en la navegación. Si usas un ordenador, prueba a navegar por él presionando la tecla <code>Tabulador</code> repetidamente. Verás que no puedes salir del menú hasta que pulses la tecla <code>Escape</code> o hagas clic fuera de él.</p>
+    </div>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>

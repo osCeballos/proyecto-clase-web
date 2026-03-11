@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrusel Moderno</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- CSS Scroll Snap Based Modern Carousels Implementation -->
+
+  <header class="header">
+    <div class="header-container">
+      <div class="logo">CreativeSlider<span style="color:var(--color-primary)">.</span></div>
+    </div>
+  </header>
+
+  <main class="content">
+    
+    <!-- Horizontal Slider Section (E-commerce Style) -->
+    <section class="slider-section">
+      <div class="slider-header">
+        <h2>Nueva Colección 2024</h2>
+        <div class="slider-controls">
+          <!-- A11Y Descriptive Control Buttons -->
+          <button class="btn-control" id="btn-prev-h" aria-label="Ver productos anteriores">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+          <button class="btn-control" id="btn-next-h" aria-label="Ver productos siguientes">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- CSS Scroll Snap Magic Container Track -->
+      <div class="slider-horizontal" id="slider-track-h">
+        
+        <!-- Snap Item Elements -->
+        <article class="slide-card">
+          <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=400" alt="Zapatilla Roja" class="slide-img">
+          <div class="slide-info">
+            <h3>Running Air Pro</h3>
+            <p>129.99 €</p>
+          </div>
+        </article>
+        
+        <article class="slide-card">
+          <img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&q=80&w=400" alt="Zapatilla Verde" class="slide-img">
+          <div class="slide-info">
+            <h3>Casual Street Edition</h3>
+            <p>89.50 €</p>
+          </div>
+        </article>
+
+        <article class="slide-card">
+          <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=400" alt="Zapatilla Roja" class="slide-img">
+          <div class="slide-info">
+            <h3>Training Lite</h3>
+            <p>105.00 €</p>
+          </div>
+        </article>
+
+        <article class="slide-card">
+          <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&q=80&w=400" alt="Zapatilla Multicolor" class="slide-img">
+          <div class="slide-info">
+            <h3>Premium Canvas</h3>
+            <p>150.00 €</p>
+          </div>
+        </article>
+
+        <article class="slide-card">
+          <img src="https://images.unsplash.com/photo-1605348532760-6753d2c43329?auto=format&fit=crop&q=80&w=400" alt="Zapatilla Negra" class="slide-img">
+          <div class="slide-info">
+            <h3>Daily Walker</h3>
+            <p>75.00 €</p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+
+    <!-- Vertical Slider Section (Feed Style) -->
+    <section class="slider-section mt-lg">
+      <div class="slider-header">
+        <h2>Lookbook de Temporada</h2>
+        <div class="slider-controls vertical-controls">
+          <button class="btn-control" id="btn-prev-v" aria-label="Subir">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><polyline points="18 15 12 9 6 15"></polyline></svg>
+          </button>
+          <button class="btn-control" id="btn-next-v" aria-label="Bajar">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Vertical Mandatory Snap Container Track -->
+      <div class="slider-vertical" id="slider-track-v">
+        <div class="v-slide" style="background-image: url('https://images.unsplash.com/photo-1620799139834-6b8f844fbe61?auto=format&fit=crop&q=80&w=600')">
+          <div class="v-content"><h3>Estilo Urbano</h3></div>
+        </div>
+        <div class="v-slide" style="background-image: url('https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&q=80&w=600')">
+          <div class="v-content"><h3>Moda Sostenible</h3></div>
+        </div>
+        <div class="v-slide" style="background-image: url('https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&q=80&w=600')">
+          <div class="v-content"><h3>Tendencias 2024</h3></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>

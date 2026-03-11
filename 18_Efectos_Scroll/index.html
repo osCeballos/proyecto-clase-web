@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scroll Reveal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Intersection Observer Native API Implementation -->
+
+  <header class="hero-section">
+    <div class="hero-content">
+      <h1><span class="text-gradient">Scroll Reveal</span> 60FPS.</h1>
+      <p>Crea experiencias interactivas que cobran vida a medida que el usuario explora el contenido, utilizando la potencia de Intersection Observer.</p>
+      <div class="scroll-indicator">↓ Sigue bajando ↓</div>
+    </div>
+  </header>
+
+  <main class="content-wrapper">
+    
+    <!-- Intersection Observer Tracker Nodes -->
+    
+    <section class="story-section">
+      <div class="text-block reveal-item" data-reveal-type="fade-up">
+        <h2>Efectos Visuales</h2>
+        <p>Añade un toque de sofisticación a tus proyectos con animaciones de entrada suaves y controladas. Mejora el "storytelling" visual de tu marca sin comprometer el rendimiento técnico.</p>
+      </div>
+      
+      <!-- Delay Staggering Pattern Matrix Nodes -->
+      <div class="image-grid">
+        <img src="https://images.unsplash.com/photo-1550537687-c9a0c20c02de?auto=format&fit=crop&q=80&w=400" alt="Tech 1" class="grid-img reveal-item" data-reveal-type="zoom-in" style="--delay: 0s;">
+        <img src="https://images.unsplash.com/photo-1542435503-956c469947f6?auto=format&fit=crop&q=80&w=400" alt="Tech 2" class="grid-img reveal-item" data-reveal-type="zoom-in" style="--delay: 0.1s;">
+        <img src="https://images.unsplash.com/photo-1510519138131-5f228b34388e?auto=format&fit=crop&q=80&w=400" alt="Tech 3" class="grid-img reveal-item" data-reveal-type="zoom-in" style="--delay: 0.2s;">
+      </div>
+    </section>
+
+    <!-- Layout Direction Local Custom Properties Configurator -->
+    <section class="feature-section">
+      <article class="feature-card reveal-item" data-reveal-type="slide-side" style="--slide-dir: -50px;">
+        <h3>Sit Amet Natus</h3>
+        <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+      </article>
+
+      <article class="feature-card reveal-item" data-reveal-type="slide-side" style="--slide-dir: 50px;">
+        <h3>Ipsum Excepteur</h3>
+        <p>Controla la dirección, el retraso y la velocidad de cada elemento para crear un flujo de información dinámico y profesional.</p>
+      </article>
+    </section>
+
+    <section class="showcase-section">
+      <div class="showcase-content reveal-item" data-reveal-type="fade-up">
+        <p>Optimizado para todos los dispositivos, asegurando una navegación fluida y una presentación impecable en cualquier resolución de pantalla.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>Fin del recorrido observado</p>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

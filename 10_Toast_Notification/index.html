@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toast Notifications</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="control-panel">
+    <header class="panel-header">
+      <h1>Consola de Notificaciones</h1>
+      <p>Prueba los diferentes tipos de avisos visuales que podemos integrar en una aplicación web.</p>
+    </header>
+
+    <section class="action-buttons">
+      <button class="btn btn--success" data-type="success" data-msg="¡El perfil se ha actualizado con éxito! ✓">Éxito</button>
+      <button class="btn btn--error" data-type="error" data-msg="Error crítico: No se ha podido conectar con el servidor. ✕">Error</button>
+      <button class="btn btn--warning" data-type="warning" data-msg="Atención: Tu suscripción caducará en 3 días. ⚠">Aviso</button>
+      <button class="btn btn--info" data-type="info" data-msg="Sabías que... Puedes personalizar estos mensajes desde el panel. ℹ">Info</button>
+    </section>
+  </main>
+
+  <!-- Contenedor Maestro Toast Array Stack -->
+  <div class="toast-container" id="toast-container" aria-live="polite">
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

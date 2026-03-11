@@ -1,0 +1,215 @@
+/* Design Tokens Globales */
+:root {
+  --color-bg: #F1F5F9; /* Slate 100 */
+  --color-text: #1E293B; /* Slate 800 */
+  --color-text-invert: #FFFFFF;
+  --color-primary: #EF4444; /* Rojo Nike */
+  --color-surface: #FFFFFF;
+  
+  --radius-card: 20px;
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: var(--color-bg);
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+}
+
+/* Render Node - Camera Escena 3D */
+.scene {
+  width: 320px;
+  height: 480px;
+  perspective: 1000px;
+}
+
+/* Contenedor Giratorio */
+.card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+/* Hover Effect Enable Optional */
+@media (hover: hover) {
+  .card:hover {
+    transform: rotateY(180deg);
+  }
+}
+
+/* Active Interaction Hooks */
+.card:focus-visible,
+.card.is-flipped { 
+  transform: rotateY(180deg);
+}
+
+/* Accessibility Clear Vision UI */
+.card:focus {
+  outline: none;
+}
+.card:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 6px;
+  border-radius: var(--radius-card);
+}
+
+/* Faces Layering */
+.card__face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  backface-visibility: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+/* Face A - Front */
+.card__face--front {
+  background-color: var(--color-surface);
+  display: flex;
+  flex-direction: column;
+}
+
+.card__img {
+  width: 100%;
+  height: 60%;
+  object-fit: cover;
+  background-color: #f1f1f1;
+}
+
+.card__content {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card__title {
+  color: var(--color-text);
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.card__price {
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.card__hint {
+  font-size: 0.8rem;
+  color: #94A3B8;
+  display: block;
+  margin-top: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+/* Face B - Black Hidden */
+.card__face--back {
+  background-color: var(--color-text);
+  color: var(--color-text-invert);
+  transform: rotateY(180deg);
+  padding: 2rem;
+}
+
+.back-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.back-title {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #94A3B8;
+  margin-bottom: 1rem;
+  margin-top: 1.5rem;
+}
+
+.back-title:first-child { margin-top: 0; }
+
+.size-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+/* Interior Size Selector Mini UX */
+.size-box {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  text-align: center;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.size-box:hover:not(:disabled) {
+  background-color: var(--color-primary);
+}
+
+.size-box:disabled {
+  opacity: 0.3;
+  text-decoration: line-through;
+  cursor: not-allowed;
+}
+
+.material-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: #CBD5E1;
+}
+
+.material-list li::before {
+  content: "•";
+  color: var(--color-primary);
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+.btn-buy {
+  margin-top: auto;
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.btn-buy:active {
+  transform: scale(0.95);
+}

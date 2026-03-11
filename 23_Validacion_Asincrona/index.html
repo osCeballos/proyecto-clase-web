@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Validación Asíncrona</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-container">
+      <div class="logo">AsyncCheck<span style="color:var(--color-primary)">.</span></div>
+    </div>
+  </header>
+
+  <main class="content">
+    <section class="form-section">
+      <div class="section-header">
+        <h1>Registro de Usuario Único</h1>
+        <p>Tu nombre de usuario es tu identidad en la plataforma. Comprueba su disponibilidad en tiempo real.</p>
+      </div>
+
+      <form class="async-form" id="async-check-form">
+        
+        <!-- Async Validation Input Target -->
+        <div class="form-group" id="group-username">
+          <label for="username">Nombre de Usuario</label>
+          <div class="input-wrapper">
+            <input 
+              type="text" 
+              id="username" 
+              name="username" 
+              placeholder="Ej. ninja_frontend" 
+              required 
+              autocomplete="off"
+            >
+            <!-- Target Evaluation UI Indicator Wrapper -->
+            <div class="loader" id="username-loader"></div>
+            <!-- Evaluation State Icon Injector Node -->
+            <span class="status-icon" id="status-icon"></span>
+          </div>
+          <span class="feedback-message" id="username-feedback"></span>
+          <span class="help-text">Elige un nombre creativo que te identifique como desarrollador.</span>
+        </div>
+
+        <!-- Basic Native Evaluation Input Payload Field -->
+        <div class="form-group">
+          <label for="email">Correo Electrónico</label>
+          <input type="email" id="email" name="email" required placeholder="usuario@ejemplo.com">
+        </div>
+
+        <button type="submit" class="btn-submit" id="submit-btn">Crear mi Perfil</button>
+
+      </form>
+    </section>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>
